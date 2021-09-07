@@ -52,9 +52,12 @@ resource "aws_launch_template" "bastion-launch-template" {
   tag_specifications {
     resource_type = "instance"
 
-    tags = {
+   tags = merge(
+    var.tags,
+    {
       Name = "bastion-launch-template"
-    }
+    },
+  )
   }
 
   user_data = filebase64("${path.module}/bastion.sh")
@@ -115,9 +118,12 @@ resource "aws_launch_template" "nginx-launch-template" {
   tag_specifications {
     resource_type = "instance"
 
-    tags = {
+    tags = merge(
+    var.tags,
+    {
       Name = "nginx-launch-template"
-    }
+    },
+  )
   }
 
   user_data = filebase64("${path.module}/nginx.sh")

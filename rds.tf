@@ -3,9 +3,12 @@ resource "aws_db_subnet_group" "ACS-rds" {
   name       = "acs-rds"
   subnet_ids = [aws_subnet.private[2].id, aws_subnet.private[3].id]
 
-  tags = {
-    Name = "ACS-rds"
-  }
+   tags = merge(
+    var.tags,
+    {
+      Name = "ACS-rds"
+    },
+  )
 }
 
 # create the RDS instance with the subnets group

@@ -24,9 +24,11 @@ master-password = "devopspblproject"
 
 master-username = "david"
 
-account_no = "696742900004"
+# Ensure to this change to your accounbt number
+account_no = "123456789"
 
 tags = {
+  Enviroment      = "production" 
   Owner-Email     = "infradev-segun@darey.io"
   Managed-By      = "Terraform"
   Billing-Account = "1234567890"

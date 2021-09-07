@@ -1,25 +1,27 @@
 variable "region" {
-  default = "eu-west-1"
+  type = string
+  description = "The region to deploy resources"
 }
 
 variable "vpc_cidr" {
-  default = "172.16.0.0/16"
+  type = string
+  description = "The VPC cidr"
 }
 
 variable "enable_dns_support" {
-  default = "true"
+  type = bool
 }
 
 variable "enable_dns_hostnames" {
-  default = "true"
+  dtype = bool
 }
 
 variable "enable_classiclink" {
-  default = "false"
+  type = bool
 }
 
 variable "enable_classiclink_dns_support" {
-  default = "false"
+  type = bool
 }
 
 variable "preferred_number_of_public_subnets" {
@@ -44,10 +46,6 @@ variable "tags" {
   default     = {}
 }
 
-variable "environment" {
-  type        = string
-  description = "Enviroment"
-}
 
 variable "ami" {
   type        = string

@@ -5,7 +5,7 @@ resource "aws_route_table" "private-rtb" {
   tags = merge(
     var.tags,
     {
-      Name = format("%s-Private-Route-Table-%s", var.name, var.environment)
+      Name = format("%s-Private-Route-Table", var.name)
     },
   )
 }
@@ -34,7 +34,7 @@ resource "aws_route_table" "public-rtb" {
   tags = merge(
     var.tags,
     {
-      Name = format("%s-Public-Route-Table-%s", var.name, var.environment)
+      Name = format("%s-Public-Route-Table", var.name)
     },
   )
 }
@@ -52,4 +52,3 @@ resource "aws_route_table_association" "public-subnets-assoc" {
   subnet_id      = element(aws_subnet.public[*].id, count.index)
   route_table_id = aws_route_table.public-rtb.id
 }
-

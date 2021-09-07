@@ -14,9 +14,12 @@ resource "aws_lb" "ext-alb" {
     aws_subnet.public[1].id
   ]
 
-  tags = {
-    Name = "nginx-alb"
-  }
+   tags = merge(
+    var.tags,
+    {
+      Name = "ACS-ext-alb"
+    },
+  )
 
   ip_address_type    = "ipv4"
   load_balancer_type = "application"
@@ -71,9 +74,12 @@ resource "aws_lb" "ialb" {
     aws_subnet.private[1].id
   ]
 
-  tags = {
-    Name = "ialb"
-  }
+ tags = merge(
+    var.tags,
+    {
+      Name = "ACS-int-alb"
+    },
+  )
 
   ip_address_type    = "ipv4"
   load_balancer_type = "application"
